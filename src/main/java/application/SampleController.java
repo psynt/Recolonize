@@ -32,9 +32,6 @@ public class SampleController implements Initializable{
 
 	@FXML TableView<Entity> table;
 	@FXML TableColumn<Entity,String> name;
-//	@FXML TableColumn<Entity,Integer> search;
-//	@FXML TableColumn<Entity,Integer> cook;
-//	@FXML TableColumn<Entity,Integer> fight;
 	
 	@FXML ContextMenu menu1;
 	@FXML MenuItem newGroup;
@@ -89,12 +86,6 @@ public class SampleController implements Initializable{
 			table.getColumns().add(cols[i]);
 			cols[i].setCellValueFactory(new PropertyValueFactory<Entity,Integer>(SKILL_NAMES[i]));
 		}
-//		TableColumn<Entity,Integer> search = new TableColumn<Entity,Integer>("Search");
-//		TableColumn<Entity,Integer> cook = new TableColumn<Entity,Integer>("Cook");
-//		TableColumn<Entity,Integer> fight = new TableColumn<Entity,Integer>("Fight");
-//		table.getColumns().add(search);
-//		table.getColumns().add(cook);
-//		table.getColumns().add(fight);
 		newGuy("Bob");
 		newGuy("John");
 		newGuy("Amy");
@@ -104,9 +95,6 @@ public class SampleController implements Initializable{
 		);
 		
 		name.setCellValueFactory(new PropertyValueFactory<Entity,String>("name"));
-//		search.setCellValueFactory(new PropertyValueFactory<Entity,Integer>("search"));
-//		cook.setCellValueFactory(new PropertyValueFactory<Entity,Integer>("cook"));
-//		fight.setCellValueFactory(new PropertyValueFactory<Entity,Integer>("fight"));
 		table.setItems(list);
 		
 	}
