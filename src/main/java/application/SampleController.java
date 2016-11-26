@@ -27,6 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static application.Constants.*;
+import javafx.scene.control.TextArea;
 
 public class SampleController implements Initializable{
 
@@ -45,6 +46,7 @@ public class SampleController implements Initializable{
 	@FXML MenuItem unGroup;
 	@FXML MenuItem delGr;
 	@FXML MenuItem add;
+	@FXML TextArea textymexty;
 	
 	@FXML public void sayHello() {
 		System.out.println("Hello World!");

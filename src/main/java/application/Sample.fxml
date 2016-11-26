@@ -5,32 +5,36 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="320.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <children>
-      <HBox prefHeight="320.0" prefWidth="460.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="320.0" prefWidth="460.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="table" onContextMenuRequested="#checkMenuItems">
-              <columns>
-                <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                <!-- <TableColumn fx:id="search" prefWidth="75.0" text="Search" />
-                <TableColumn fx:id="cook" prefWidth="75.0" text="Cook" />
-                <TableColumn fx:id="fight" prefWidth="75.0" text="Fight" />-->
-              </columns>
-               <contextMenu>
-                  <ContextMenu fx:id="menu1">
-                    <items>
-                      <MenuItem fx:id="delGr" disable="true" mnemonicParsing="false" onAction="#unGroup" text="Ungroup" />
-                      <MenuItem fx:id="add" mnemonicParsing="false" onAction="#addToGroup" text="Add to group" />
-                      <MenuItem fx:id="newGroup" mnemonicParsing="false" onAction="#newGroup" text="New group" />
-                    </items>
-                  </ContextMenu>
-               </contextMenu>
-            </TableView>
-            <Button mnemonicParsing="false" onMouseClicked="#printStats" text="Print" />
+            <HBox prefHeight="320.0" prefWidth="460.0">
+               <children>
+                  <TableView fx:id="table" onContextMenuRequested="#checkMenuItems">
+                    <columns>
+                      <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                    </columns>
+                     <contextMenu>
+                        <ContextMenu fx:id="menu1">
+                          <items>
+                            <MenuItem fx:id="delGr" disable="true" mnemonicParsing="false" onAction="#unGroup" text="Ungroup" />
+                            <MenuItem fx:id="add" mnemonicParsing="false" onAction="#addToGroup" text="Add to group" />
+                            <MenuItem fx:id="newGroup" mnemonicParsing="false" onAction="#newGroup" text="New. group" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                  </TableView>
+                  <Button mnemonicParsing="false" onMouseClicked="#printStats" text="Print" />
+               </children>
+            </HBox>
+            <TextArea fx:id="textymexty" editable="false" prefHeight="200.0" prefWidth="200.0" />
          </children>
-      </HBox>
+      </VBox>
    </children>
 </AnchorPane>
