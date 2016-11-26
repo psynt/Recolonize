@@ -15,9 +15,9 @@
             <TableView fx:id="table" onContextMenuRequested="#checkMenuItems">
               <columns>
                 <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
-                <TableColumn fx:id="search" prefWidth="75.0" text="Search" />
+                <!-- <TableColumn fx:id="search" prefWidth="75.0" text="Search" />
                 <TableColumn fx:id="cook" prefWidth="75.0" text="Cook" />
-                <TableColumn fx:id="fight" prefWidth="75.0" text="Fight" />
+                <TableColumn fx:id="fight" prefWidth="75.0" text="Fight" />-->
               </columns>
                <contextMenu>
                   <ContextMenu fx:id="menu1">

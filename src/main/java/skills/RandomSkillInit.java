@@ -1,6 +1,9 @@
 package skills;
 
+import java.util.Random;
+
 public class RandomSkillInit extends SkillInit {
+	private static Random r= new Random();
 	private int max;
 	
 	public RandomSkillInit(int m,String name) {
@@ -10,7 +13,7 @@ public class RandomSkillInit extends SkillInit {
 
 	@Override
 	public Skill newSkill() {
-		return new Skill(name,(int)(Math.random() * max));
+		return new Skill(name,r.nextInt(max+1));
 	}
 
 
