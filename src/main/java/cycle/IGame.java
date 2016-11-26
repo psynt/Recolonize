@@ -1,14 +1,14 @@
 package cycle;
 
 import java.util.ArrayList;
-
 import entities.Entity;
-import javafx.collections.ObservableList;
 
 public interface IGame {
-	void setList(ArrayList<Entity> a);
+	public void initialise();
+	public void performDay();
+	public void performNight();
+	public void setEntityList(ArrayList<Entity> list);
 	
-	//boolean add(Entity e);
-	//void rm(Entity e);
-	
+	public void addEntity(Entity e);
+	public void removeEntity(Entity e);
 }

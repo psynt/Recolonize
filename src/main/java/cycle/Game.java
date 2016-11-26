@@ -28,4 +28,12 @@ public class Game implements IGame {
 	public void setEntityList(ArrayList<Entity> list) {
 		// update the list in Colony
 	}
+	
+	public void addEntity(Entity e) {
+		
+	}
+	
+	public void removeEntity(Entity e) {
+		
+	}
 }
