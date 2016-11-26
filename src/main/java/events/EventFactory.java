@@ -1,8 +1,11 @@
 package events;
 
-import events.Probabilities;
-
 public abstract class EventFactory {
-	public static final int EVENT_FIND_SMALL_COLONY = Probabilities.Low.getProbability();
+	public static final int HIGH = 40;
+	public static final int MEDIUM = 20;
+	public static final int LOW = 10;
+	public static final int VERY_LOW = 5;
 	
+	public static int EVENT_FIND_SMALL_COLONY = LOW;
+	public static int EVENT_SMALL_RAID = LOW;
 }
