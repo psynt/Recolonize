@@ -32,7 +32,7 @@ import javafx.stage.Stage;
 import static application.Constants.*;
 import javafx.scene.control.TextArea;
 
-public class SampleController implements Initializable{
+public class SampleController implements Initializable,IController{
 
 	@FXML TableView<Entity> table;
 	@FXML TableColumn<Entity,String> name;
@@ -71,13 +71,17 @@ public class SampleController implements Initializable{
 		Group g = new Group(s);
 		add(g);
 	}
+	
+	public void updateList(ObservableList<Entity> e){
+		list = e;
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		add(new Member("Bob",10));
-		add(new Member("John",10));
-		add(new Member("Amy",10));
-		ig = new DummyGame();
+		//add(new Member("Bob",10));
+		//add(new Member("John",10));
+		//add(new Member("Amy",10));
+		ig = new DummyGame(this);
 		TableColumn<Entity,Integer> cols[] = new TableColumn[NUM_SKILLS];
 		for (int i = 0 ; i<cols.length ; i++) {
 			cols[i] = new TableColumn<Entity, Integer>(SKILL_NAMES[i]);
