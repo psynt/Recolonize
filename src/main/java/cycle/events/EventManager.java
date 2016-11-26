@@ -1,4 +1,4 @@
-package events;
+package cycle.events;
 
 import java.util.ArrayList;
 
