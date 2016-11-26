@@ -40,7 +40,7 @@ public class SampleController implements Initializable{
 	@FXML MenuItem newGroup;
 
 	
-	private volatile long entityCount; //PK for entities
+	//private volatile long entityCount; //PK for entities
 	
 	public ObservableList<Entity> list = FXCollections.observableArrayList();
 	
@@ -70,15 +70,13 @@ public class SampleController implements Initializable{
 		list.remove(m);
 	}
 	
-	
-	
 	private synchronized void newGuy(String s){
-		Member m=new Member(entityCount++, s , 10);
+		Member m=new Member(s , 10);
 		add(m);
 	}
 	
 	private synchronized void newGroup(String s){
-		Group g = new Group(entityCount++, s);
+		Group g = new Group(s);
 		add(g);
 	}
 

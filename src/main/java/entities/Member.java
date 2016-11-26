@@ -2,18 +2,26 @@ package entities;
 
 import skills.MemberSkills;
 import skills.MemberSkillsFactory;
-
-public class Member extends Entity{
+/**
+ * Represents individuals in our Colony
+ * @author nichita
+ *
+ */
+public final class Member extends Entity{
 	private final MemberSkills skillset;
-	
-	public Member(long id, String name,  int s){
-		super(id, " " + name);
+	/***
+	 * 
+	 * @param name Name of the poor guy
+	 * @param s starting skill level. handled in MemberSkillsFactory, passed as "m"
+	 */
+	public Member(String name,  int s){
+		super(" " + name);
 		super.group = false;
 		skillset = MemberSkillsFactory.create(s);
 	}
 	
-	public Member(int id){
-		this(id,"Bob",10);
+	public Member(){
+		this("Bob",10);
 	}
 
 	@Override

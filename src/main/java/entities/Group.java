@@ -2,28 +2,40 @@ package entities;
 
 import java.util.ArrayList;
 
-public class Group extends Entity{
+public final class Group extends Entity{
 	private ArrayList<Member> members;
-	
-	public Group(long id, ArrayList<Member> members, String name) {
-		super(id, "*" + name);
+	/**
+	 * 
+	 * @param members ArrayList of members that the group should start out with
+	 * @param name name of the group
+	 */
+	public Group( ArrayList<Member> members, String name) {
+		super("*" + name);
 		super.group = true;
 		this.members = members;
 		
 	}
-	
-	public Group(long id, String name) {
-		this(id, new ArrayList<Member>(),name);
+	/**
+	 * 
+	 * @param name name of the group
+	 */
+	public Group(String name) {
+		this(new ArrayList<Member>(),name);
 	}
-	
+	/**
+	 * 
+	 * @param m Member to be added
+	 */
 	public void add(Member m){
 		members.add(m);
 	}
-	
+	/**
+	 * 
+	 * @return ArrayList of all this group's members
+	 */
 	public ArrayList<Member> getMembers(){
 		return members;
 	}
-	
 	
 	@Override
 	public int getCook(){
