@@ -1,7 +1,7 @@
 package events;
 
-public abstract class EventFactory {
-	public static final int HIGH = 40;
+public class EventFactory {
+	public static final int HIGH = 30;
 	public static final int MEDIUM = 20;
 	public static final int LOW = 10;
 	public static final int VERY_LOW = 5;
