@@ -18,7 +18,7 @@ public abstract class Entity{
 		return id;
 	}
 	
-	public boolean isGroup(){
+	public final boolean isGroup(){
 		return group;
 	}
 	

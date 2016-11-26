@@ -2,16 +2,12 @@ package skills;
 
 import java.util.Hashtable;
 
-public class MemberSkills implements ISkills{
+public class MemberSkills implements ISkillSet{
 
-	private Hashtable<String,Integer> skillset;
+	private Hashtable<String,Skill> skillset;
 	
-	public MemberSkills(SkillInit s){
-		skillset = new Hashtable<String, Integer>(3);
-		skillset.put("search", s.newSkill());
-		skillset.put("cook", s.newSkill());
-		skillset.put("fight", s.newSkill());
-		
+	public MemberSkills(int n){
+		skillset = new Hashtable<String, Skill>(n);
 	}
 	
 	@Override
@@ -25,15 +21,25 @@ public class MemberSkills implements ISkills{
 	}
 
 	public int getCook() {
-		return skillset.get("cook");
+		return skillset.get("cook").getLevel();
 	}
 
 	public int getSearch() {
-		return skillset.get("search");
+		return skillset.get("search").getLevel();
 	}
 
 	public int getFight() {
-		return skillset.get("fight");
+		return skillset.get("fight").getLevel();
+	}
+
+	@Override
+	public Skill[] getSkills() {
+		return (Skill[]) skillset.entrySet().stream().map(e -> e.getValue()).toArray();
+	}
+
+	@Override
+	public void add(Skill s) {
+		skillset.put(s.getName(), s);
 	}
 	
 	

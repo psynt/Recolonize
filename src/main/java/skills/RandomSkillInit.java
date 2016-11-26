@@ -1,15 +1,17 @@
 package skills;
 
-public class RandomSkillInit implements SkillInit {
+public class RandomSkillInit extends SkillInit {
 	private int max;
 	
-	public RandomSkillInit(int m) {
+	public RandomSkillInit(int m,String name) {
+		super(name);
 		max=m;
 	}
 
 	@Override
-	public Integer newSkill() {
-		return (int)(Math.random() * max);
+	public Skill newSkill() {
+		return new Skill(name,(int)(Math.random() * max));
 	}
+
 
 }
