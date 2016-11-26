@@ -1,4 +1,4 @@
-package events;
+package cycle.events;
 
 /**
  * Set of values that event probabilities can have
