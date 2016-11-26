@@ -38,9 +38,6 @@ public class SampleController implements Initializable{
 	
 	@FXML ContextMenu menu1;
 	@FXML MenuItem newGroup;
-
-	
-	//private volatile long entityCount; //PK for entities
 	
 	public ObservableList<Entity> list = FXCollections.observableArrayList();
 	
