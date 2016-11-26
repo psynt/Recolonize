@@ -18,6 +18,7 @@
                <children>
                   <TableView fx:id="table" onContextMenuRequested="#checkMenuItems">
                     <columns>
+                      <TableColumn fx:id="assignment" prefWidth="75.0" text="Assignment" />
                       <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
                     </columns>
                      <contextMenu>
@@ -25,7 +26,7 @@
                           <items>
                             <MenuItem fx:id="delGr" disable="true" mnemonicParsing="false" onAction="#unGroup" text="Ungroup" />
                             <MenuItem fx:id="add" mnemonicParsing="false" onAction="#addToGroup" text="Add to group" />
-                            <MenuItem fx:id="newGroup" mnemonicParsing="false" onAction="#newGroup" text="New. group" />
+                            <MenuItem fx:id="newGroup" mnemonicParsing="false" onAction="#newGroup" text="New group" />
                           </items>
                         </ContextMenu>
                      </contextMenu>
