@@ -6,7 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+/**
+ * Dialog box that prompts the user to insert a new group name
+ * @author nichita
+ *
+ */
 public class NewGroupController {
 
 	@FXML TextField newName;
