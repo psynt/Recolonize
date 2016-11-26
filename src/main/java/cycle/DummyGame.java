@@ -21,19 +21,8 @@ public class DummyGame implements IGame {
 	}
 	
 
-
-	/*@Override
-	public boolean add(Entity e) {
-		return list.add(e);
-	}
-
 	@Override
-	public void rm(Entity e) {
-		list.remove(e);
-	}*/
-
-	@Override
-	public void setList(ArrayList<Entity> a) {
+	public void setEntityList(ArrayList<Entity> a) {
 		list = a;
 	}
 	
