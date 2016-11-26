@@ -13,4 +13,6 @@ addons:
   apt:
     packages:
       - oracle-java8-installer
-
+notifications:
+  email: false
+  slack: recolonize:wXbXAFYJpkuxt6VouW0Xt2dd
