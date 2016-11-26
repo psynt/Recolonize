@@ -1,5 +1,7 @@
 package cycle;
 
+import java.util.ArrayList;
+
 import entities.Entity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,5 +25,7 @@ public class Game implements IGame {
 		night.perform();
 	}
 	
-	
+	public void setEntityList(ArrayList<Entity> list) {
+		// update the list in Colony
+	}
 }
