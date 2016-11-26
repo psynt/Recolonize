@@ -11,7 +11,7 @@ public class Game implements IGame {
 	private Night night;
 	private Colony colony;
 	
-	public void initialise() {
+	public Game() {
 		day = new Day();
 		night = new Night();
 		colony = new Colony();
