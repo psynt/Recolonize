@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import entities.Assignment;
 import entities.Entity;
 import entities.Group;
 import entities.Member;
@@ -33,6 +34,7 @@ public class SampleController implements Initializable{
 
 	@FXML TableView<Entity> table;
 	@FXML TableColumn<Entity,String> name;
+	@FXML TableColumn<Entity,String> assignment;
 	
 	@FXML ContextMenu menu1;
 	@FXML MenuItem newGroup;
@@ -97,6 +99,7 @@ public class SampleController implements Initializable{
 		);
 		
 		name.setCellValueFactory(new PropertyValueFactory<Entity,String>("name"));
+		assignment.setCellValueFactory(new PropertyValueFactory<Entity,String>("assignment"));
 		table.setItems(list);
 		
 	}

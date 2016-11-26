@@ -1,11 +1,18 @@
 package skills;
 
 import java.util.Hashtable;
-
+/**
+ * Skillset for members
+ * @author nichita
+ *
+ */
 public class MemberSkills implements ISkillSet{
 
 	private Hashtable<String,Skill> skillset;
-	
+	/**
+	 * Constructs a new skillset
+	 * @param n number of skills
+	 */
 	public MemberSkills(int n){
 		skillset = new Hashtable<String, Skill>(n);
 	}

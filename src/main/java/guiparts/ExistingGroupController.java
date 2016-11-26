@@ -10,7 +10,11 @@ import javafx.scene.Node;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-
+/**
+ * Controller for the GUI dialog box that appears when the user adds members to a group
+ * @author nichita
+ *
+ */
 public class ExistingGroupController {
 
 	private Report<Group> s;

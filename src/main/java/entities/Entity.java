@@ -4,10 +4,17 @@ public abstract class Entity{
 	private final String name;
 	private final long id;
 	protected boolean group;
+	private Assignment assignment;
+	
 	
 	protected Entity(long id,String name){
+		assignment = Assignment.None;
 		this.id = id;
 		this.name = name;
+	}
+	
+	public void setAsssignment(Assignment a){
+		assignment = a;
 	}
 
 	public String getName() {
@@ -20,6 +27,10 @@ public abstract class Entity{
 	
 	public final boolean isGroup(){
 		return group;
+	}
+	
+	public String getAssignment() {
+		return assignment.toString();
 	}
 	
 	public abstract int getCook();
