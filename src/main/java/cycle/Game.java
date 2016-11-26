@@ -1,16 +1,27 @@
 package cycle;
 
-public class Game {
-	private int survivors;
-	private int rations;
-	private int uncooked;
-	private int weapons;
-	// need to add cookbots, turrets and radio
+import entities.Entity;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+public class Game implements IGame {
+	private Day day;
+	private Night night;
+	private Colony colony;
 	
-	public void play() {
-		Day d = new Day();
-		Night n = new Night();
-		
-		
+	public void initialise() {
+		day = new Day();
+		night = new Night();
+		colony = new Colony();
 	}
+	
+	public void performDay() {
+		day.perform();
+	}
+	
+	public void performNight() {
+		night.perform();
+	}
+	
+	
 }
