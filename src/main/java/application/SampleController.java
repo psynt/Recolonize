@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import cycle.DummyGame;
+import cycle.IGame;
 import entities.Assignment;
 import entities.Entity;
 import entities.Group;
@@ -38,19 +40,17 @@ public class SampleController implements Initializable{
 	
 	@FXML ContextMenu menu1;
 	@FXML MenuItem newGroup;
-	
-	public ObservableList<Entity> list = FXCollections.observableArrayList();
-	
-	
 	@FXML MenuItem unGroup;
 	@FXML MenuItem delGr;
 	@FXML MenuItem add;
 	@FXML TextArea textymexty;
 	
+	private IGame ig;
+	private ObservableList<Entity> list = FXCollections.observableArrayList();
+	
 	@FXML public void sayHello() {
 		System.out.println("Hello World!");
 	}
-	
 	
 	@FXML public void printStats() {
 		ObservableList<Entity> selection = table.getSelectionModel().getSelectedItems();
@@ -67,11 +67,6 @@ public class SampleController implements Initializable{
 		list.remove(m);
 	}
 	
-	private synchronized void newGuy(String s){
-		Member m=new Member(s , 10);
-		add(m);
-	}
-	
 	private synchronized void newGroup(String s){
 		Group g = new Group(s);
 		add(g);
@@ -79,24 +74,22 @@ public class SampleController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		add(new Member("Bob",10));
+		add(new Member("John",10));
+		add(new Member("Amy",10));
+		ig = new DummyGame();
 		TableColumn<Entity,Integer> cols[] = new TableColumn[NUM_SKILLS];
 		for (int i = 0 ; i<cols.length ; i++) {
 			cols[i] = new TableColumn<Entity, Integer>(SKILL_NAMES[i]);
 			table.getColumns().add(cols[i]);
 			cols[i].setCellValueFactory(new PropertyValueFactory<Entity,Integer>(SKILL_NAMES[i]));
 		}
-		newGuy("Bob");
-		newGuy("John");
-		newGuy("Amy");
 
-		table.getSelectionModel().setSelectionMode(
-		    SelectionMode.MULTIPLE
-		);
+		table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		name.setCellValueFactory(new PropertyValueFactory<Entity,String>("name"));
 		assignment.setCellValueFactory(new PropertyValueFactory<Entity,String>("assignment"));
 		table.setItems(list);
-		
 	}
 	
 	private void putInGroup(Group g){
