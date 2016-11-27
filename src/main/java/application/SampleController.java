@@ -1,11 +1,15 @@
 package application;
 
+import static application.Constants.NUM_SKILLS;
+import static application.Constants.SKILL_NAMES;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import cycle.DummyGame;
+import cycle.Game;
 import cycle.IGame;
 import entities.Assignment;
 import entities.Entity;
@@ -24,13 +28,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import static application.Constants.*;
-import javafx.scene.control.TextArea;
+import javafx.event.ActionEvent;
 
 public class SampleController implements Initializable,IController{
 
@@ -43,7 +47,13 @@ public class SampleController implements Initializable,IController{
 	@FXML MenuItem unGroup;
 	@FXML MenuItem delGr;
 	@FXML MenuItem add;
+	
 	@FXML TextArea textymexty;
+
+	@FXML TextField mem;
+	@FXML TextField food;
+	@FXML TextField unc;
+	@FXML TextField wep;
 	
 	private IGame ig;
 	private ObservableList<Entity> list = FXCollections.observableArrayList();
@@ -78,10 +88,7 @@ public class SampleController implements Initializable,IController{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//add(new Member("Bob",10));
-		//add(new Member("John",10));
-		//add(new Member("Amy",10));
-		ig = new DummyGame(this);
+		ig = new Game(this);
 		TableColumn<Entity,Integer> cols[] = new TableColumn[NUM_SKILLS];
 		for (int i = 0 ; i<cols.length ; i++) {
 			cols[i] = new TableColumn<Entity, Integer>(SKILL_NAMES[i]);
@@ -94,6 +101,7 @@ public class SampleController implements Initializable,IController{
 		name.setCellValueFactory(new PropertyValueFactory<Entity,String>("name"));
 		assignment.setCellValueFactory(new PropertyValueFactory<Entity,String>("assignment"));
 		table.setItems(list);
+		update();
 	}
 	
 	private void putInGroup(Group g){
@@ -120,7 +128,7 @@ public class SampleController implements Initializable,IController{
 		table.getSelectionModel().getSelectedItems().stream().filter(e -> e.isGroup()).forEach(e -> a.add((Group) e));
 		
 		a.stream().forEach(e -> {
-			e.getMembers().forEach(m -> {
+			e.getAll().forEach(m -> {
 				add(m);
 			});
 			rm(e);
@@ -173,6 +181,31 @@ public class SampleController implements Initializable,IController{
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initOwner(table.getScene().getWindow());
 		stage.showAndWait();
+		
+	}
+	
+	private void update(){
+		mem.setText(ig.getMemberCount() + "");
+		food.setText(ig.getFoodCount() + "");
+		unc.setText(ig.getUncCount() + "");
+		wep.setText(ig.getWepCount() + "");
+	}
+
+	@FXML public void next() {
+		textymexty.setText(ig.next());
+		
+		
+	}
+
+	@FXML public void assign(ActionEvent event) {
+		
+		Assignment a = Assignment.toAssignment(((MenuItem)event.getSource()).getText());
+		
+		//System.out.println(a);
+		
+		table.getSelectionModel().getSelectedIndices().parallelStream().forEach(e -> list.get(e).setAsssignment(a));
+		table.refresh();
+		
 		
 	}
 

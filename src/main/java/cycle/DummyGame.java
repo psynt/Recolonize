@@ -8,16 +8,24 @@ import entities.Member;
 import javafx.collections.FXCollections;
 
 public class DummyGame implements IGame {
-	public ArrayList<Entity> list = new ArrayList<Entity>();
+	private ArrayList<Entity> list = new ArrayList<Entity>();
 	private IController ic;
+	private Colony colony;
 	
 	
 	public DummyGame( IController ic) {
+		list.add(new Member());
+		colony = new Colony();
+		colony.findSomeone();
+		colony.findSomeone();
+		colony.findSomeone();
+		colony.findSomeone();
+		colony.findSomeone();
+		colony.findSomeone();
+		colony.findSomeone();
 		this.ic = ic;
-		list.add(new Member("Bob",10));
-		list.add(new Member("John",10));
-		list.add(new Member("Amy",10));
-		ic.updateList(FXCollections.observableArrayList(list));
+		this.ic.updateList(FXCollections.observableArrayList(colony.getMembers()));
+		
 	}
 	
 
@@ -25,8 +33,35 @@ public class DummyGame implements IGame {
 	public void setEntityList(ArrayList<Entity> a) {
 		list = a;
 	}
+
+
+	@Override
+	public String next() {
+		return "Doing something";
+		
+	}
 	
-	
+
+
+	@Override
+	public int getMemberCount() {
+		return colony.getSurvivors();
+	}
+
+	@Override
+	public int getFoodCount() {
+		return colony.getRations();
+	}
+
+	@Override
+	public int getWepCount() {
+		return colony.getWeapons();
+	}
+
+	@Override
+	public int getUncCount() {
+		return colony.getUncooked();
+	}
 
 	
 

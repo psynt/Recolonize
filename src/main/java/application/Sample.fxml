@@ -2,15 +2,18 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="320.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+<AnchorPane prefHeight="519.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <children>
       <VBox prefHeight="320.0" prefWidth="460.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -18,8 +21,8 @@
                <children>
                   <TableView fx:id="table" onContextMenuRequested="#checkMenuItems">
                     <columns>
-                      <TableColumn fx:id="assignment" prefWidth="75.0" text="Assignment" />
-                      <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
+                      <TableColumn fx:id="assignment" prefWidth="101.0" text="Assignment" />
+                      <TableColumn fx:id="name" prefWidth="70.0" text="Name" />
                     </columns>
                      <contextMenu>
                         <ContextMenu fx:id="menu1">
@@ -27,11 +30,44 @@
                             <MenuItem fx:id="delGr" disable="true" mnemonicParsing="false" onAction="#unGroup" text="Ungroup" />
                             <MenuItem fx:id="add" mnemonicParsing="false" onAction="#addToGroup" text="Add to group" />
                             <MenuItem fx:id="newGroup" mnemonicParsing="false" onAction="#newGroup" text="New group" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem disable="true" mnemonicParsing="false" text="Assign to:" />
+                              <MenuItem mnemonicParsing="false" onAction="#assign" text="None" />
+                              <MenuItem mnemonicParsing="false" onAction="#assign" text="Cook" />
+                              <MenuItem mnemonicParsing="false" onAction="#assign" text="Search" />
                           </items>
                         </ContextMenu>
                      </contextMenu>
                   </TableView>
-                  <Button mnemonicParsing="false" onMouseClicked="#printStats" text="Print" />
+                  <VBox prefHeight="258.0" prefWidth="172.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="118.0" text="Total members" />
+                              <TextField fx:id="mem" editable="false" prefHeight="26.0" prefWidth="84.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="118.0" text="Food rations" />
+                              <TextField fx:id="food" editable="false" prefHeight="26.0" prefWidth="84.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="118.0" text="Uncooked food" />
+                              <TextField fx:id="unc" editable="false" prefHeight="26.0" prefWidth="84.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="118.0" text="Weapons" />
+                              <TextField fx:id="wep" editable="false" prefHeight="26.0" prefWidth="84.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Button mnemonicParsing="false" onMouseClicked="#next" text="Go" />
                </children>
             </HBox>
             <TextArea fx:id="textymexty" editable="false" prefHeight="200.0" prefWidth="200.0" />

@@ -1,7 +1,5 @@
 package cycle.events;
 
-import java.util.ArrayList;
-
 /**
  * All events should stem from this
  * @author nichita

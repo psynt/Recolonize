@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.ArrayList;
+
 import skills.MemberSkills;
 import skills.MemberSkillsFactory;
 /**
@@ -42,5 +44,12 @@ public final class Member extends Entity{
 	@Override
 	public String toString() {
 		return getName() + " has: " + getSearch() + " searching, " + getCook() + " cooking, " + getFight() + " fighting";
+	}
+
+	@Override
+	public ArrayList<Member> getAll() {
+		ArrayList<Member> a = new ArrayList<Member>();
+		a.add(this);
+		return a;
 	}
 }

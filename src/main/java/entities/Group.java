@@ -29,13 +29,6 @@ public final class Group extends Entity{
 	public void add(Member m){
 		members.add(m);
 	}
-	/**
-	 * 
-	 * @return ArrayList of all this group's members
-	 */
-	public ArrayList<Member> getMembers(){
-		return members;
-	}
 	
 	@Override
 	public int getCook(){
@@ -58,6 +51,10 @@ public final class Group extends Entity{
 		StringBuilder sb = new StringBuilder(getName() + " has: " + getSearch() + " searching, " + getCook() + " cooking, " + getFight() + " fighting\n");
 		members.stream().forEach(e -> sb.append("\t" + e.toString() + "\n"));
 		return sb.toString();
+	}
+	@Override
+	public ArrayList<Member> getAll() {
+		return members;
 	}
 
 }

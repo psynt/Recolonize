@@ -1,5 +1,12 @@
 package application;
 	
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import collections.NameDispenser;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,6 +29,15 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		try {
+			NameDispenser.init();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		launch(args);
 	}
 }

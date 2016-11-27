@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.ArrayList;
+
 /**
  * Entities - Members or Groups (of members)
  * @author nichita
@@ -23,7 +25,14 @@ public abstract class Entity{
 	public void setAsssignment(Assignment a){
 		assignment = a;
 	}
-
+	
+	/**
+	 * 
+	 * @return arraylist containing all members in current entity
+	 */
+	public abstract ArrayList<Member> getAll();
+	
+	
 	/**
 	 * 
 	 * @return name of the poor sod
