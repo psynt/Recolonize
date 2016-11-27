@@ -20,6 +20,7 @@ public class Game implements IGame {
 		night = new Night();
 		colony = new Colony();
 		this.ic = ic;
+		list.addAll(colony.getMembers());
 		this.ic.updateList(FXCollections.observableArrayList(colony.getMembers()));
 	}
 	
@@ -56,6 +57,7 @@ public class Game implements IGame {
 		
 		
 		//start updating colony
+		
 		colony.updateMembers(unroll(list));
 		ic.updateList(FXCollections.observableArrayList(list));
 		
