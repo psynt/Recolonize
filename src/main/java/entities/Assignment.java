@@ -17,8 +17,6 @@ public enum Assignment {
 		case "None": a = None;
 			break;
 		default: a = None;
-			System.err.println("Bad assignment");
-			break;
 		}
 		return a;
 	}
