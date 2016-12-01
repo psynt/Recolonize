@@ -1,5 +1,6 @@
 package application;
 	
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
+		System.out.println(new File("Sample.fxml").getAbsolutePath());
 		try {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			Scene scene = new Scene(root);
@@ -29,13 +31,10 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		//System.out.println(new File("Sample.fxml").getAbsolutePath());
 		try {
 			NameDispenser.init();
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		}catch(ParserConfigurationException | SAXException | IOException e){
 			e.printStackTrace();
 		}
 		launch(args);

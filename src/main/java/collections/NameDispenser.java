@@ -26,7 +26,6 @@ public class NameDispenser {
 		for(int i = 0 ; i<nl.getLength() ; i++){
 			names.add(nl.item(i).getTextContent());
 		}
-		//System.out.println(names);
 	}
 	public static String next() {
 		

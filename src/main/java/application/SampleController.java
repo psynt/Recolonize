@@ -125,7 +125,9 @@ public class SampleController implements Initializable,IController{
 
 	@FXML public void unGroup() {
 		ArrayList<Group> a = new ArrayList<Group>();
-		table.getSelectionModel().getSelectedItems().stream().filter(e -> e.isGroup()).forEach(e -> a.add((Group) e));
+		table.getSelectionModel().getSelectedItems()
+			.stream().filter(e -> e.isGroup())
+				.forEach(e -> a.add((Group) e));
 		
 		a.stream().forEach(e -> {
 			e.getAll().forEach(m -> {
