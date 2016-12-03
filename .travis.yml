@@ -14,7 +14,7 @@ cache:
 jdk:
   - oraclejdk8
 
-sudo: false
+sudo: required
 
 #before_install:
 #- npm install gulp gulp-mocha gulp-util chai
