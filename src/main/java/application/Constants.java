@@ -9,12 +9,7 @@ public interface Constants {
 	int INIT_RATIONS = 2 * INIT_SURV;
 	int INIT_WEAPONS = 0;
 	int	INIT_UNC = 0;
-	
-	/**
-	 * food cooked by each person
-	 */
-	int CHEF_COOK = 2;
-	
+
 	/**
 	 * uncooked -> ration ratio
 	 */

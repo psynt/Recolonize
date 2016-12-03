@@ -1,11 +1,11 @@
 package cycle;
 
-import static application.Constants.*;
+import entities.Member;
 
 import java.util.ArrayList;
 
-import entities.Member;
-import static entities.MemberFactory.*;
+import static application.Constants.*;
+import static entities.MemberFactory.gimmie;
 
 public class Colony {
 	private ArrayList<Member> members = new ArrayList<Member>();
@@ -46,17 +46,6 @@ public class Colony {
 		members = updatedList;
 	}
 	
-	/**
-	 * cook food
-	 * @param n number of people that cook food
-	 */
-	public void cook(int n){
-		int unc_pending_cooking = min(n * CHEF_COOK,uncooked);
-		uncooked-=unc_pending_cooking;
-		rations+=unc_pending_cooking * UNC_RAT;
-		
-	}
-	
 	public int getRations() {
 		return rations;
 	}
@@ -84,6 +73,5 @@ public class Colony {
 	public int getSurvivors() {
 		return members.size();
 	}
-	
-	
+
 }

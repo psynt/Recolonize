@@ -6,7 +6,7 @@ package cycle.events;
  *
  */
 public enum Probabilities {
-	veryLow,Low,Medium,High,Certain;
+	almostNever,veryLow,Low,Medium,High,Certain;
 	/**
 	 * transforms the probabilities into integers
 	 * @return int representation of the probability
@@ -24,9 +24,15 @@ public enum Probabilities {
 			break;
 		case veryLow: i = 5;
 			break;
+		case almostNever: i = 1;
+			break;
 		default: throw new RuntimeException("Undefined Probability");
 		}
 		return i;
 	}
+
+	public boolean roll(){
+	    return (int)((Math.random() * 100) + 1) <= this.getProbability();
+    }
 	
 }

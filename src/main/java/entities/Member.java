@@ -11,6 +11,8 @@ import java.util.ArrayList;
  */
 public final class Member extends Entity{
 	private final MemberSkills skillset;
+	private boolean weapon;
+
 	/***
 	 * 
 	 * @param name Name of the poor guy
@@ -40,7 +42,23 @@ public final class Member extends Entity{
 	public int getFight() {
 		return skillset.getFight();
 	}
-	
+
+	/**
+	 *
+	 * @return true if given member has a weapon, false if he may only use his fists
+	 */
+	public boolean hasWeapon(){
+		return weapon;
+	}
+
+	/**
+	 * gives or takes poor sod's weapon
+	 * @param newWeapon new value for field weapon
+	 */
+	public void giveTakeWeapon(boolean newWeapon) {
+		weapon = true;
+	}
+
 	@Override
 	public String toString() {
 		return getName() + " has: " + getSearch() + " searching, " + getCook() + " cooking, " + getFight() + " fighting";
