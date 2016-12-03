@@ -1,11 +1,6 @@
 language: java
 
 
-before_install:
-- npm install gulp gulp-mocha gulp-util chai
-- sudo apt-get update
-- sudo apt-get install scala
-script: "gradle build"
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -20,6 +15,12 @@ jdk:
   - oraclejdk8
 
 sudo: false
+
+before_install:
+- npm install gulp gulp-mocha gulp-util chai
+- sudo apt-get update
+- sudo apt-get install scala
+script: "gradle build"
 
 addons:
   apt:
