@@ -25,3 +25,15 @@ hs_err_pid*
 .idea/vcs.xml
 .idea/workspace.xml
 Recolonize.eml
+/gradlew.bat
+.idea/
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.scala-ide.sdt.core.prefs
+Recolonize.iml
+Recolonize.ipr
+Recolonize.iws
+out/
+project/
+src/main/java/skills/XCv.scala
+target/
+/gradlew
