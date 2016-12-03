@@ -9,9 +9,9 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'scala'
 apply plugin: 'eclipse'
 apply plugin: 'groovy'
-apply plugin: 'scala'
 apply plugin: 'idea'
 
 sourceCompatibility = 1.8
@@ -22,6 +22,9 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
+
+sourceSets.main.scala.srcDir "src/main/java"
+sourceSets.main.java.srcDirs = []
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
