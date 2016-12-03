@@ -1,9 +1,13 @@
 package entities;
 
+import skills.XCv;
+import skills.XpCurve;
+
 import java.util.ArrayList;
 
 public final class Group extends Entity{
 	private ArrayList<Member> members;
+	private XpCurve x = XCv.apply();
 	/**
 	 * 
 	 * @param members ArrayList of members that the group should start out with
@@ -32,18 +36,17 @@ public final class Group extends Entity{
 	
 	@Override
 	public int getCook(){
-		return members.parallelStream().map(e -> e.getCook()).reduce(0, (a ,b)-> a+b);
-		
+		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("cook")).reduce(0, (a ,b)-> a+b));
 	}
 	
 	@Override
 	public int getSearch(){
-		return members.parallelStream().map(e -> e.getSearch()).reduce(0, (a ,b)-> a+b);
+		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("search")).reduce(0, (a ,b)-> a+b));
 	}
 	
 	@Override
 	public int getFight(){
-		return members.parallelStream().map(e -> e.getFight()).reduce(0, (a ,b)-> a+b);
+		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("fight")).reduce(0, (a ,b)-> a+b));
 	}
 	
 	@Override

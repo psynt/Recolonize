@@ -9,6 +9,8 @@ import java.util.Hashtable;
 public class MemberSkills implements ISkillSet{
 
 	private Hashtable<String,Skill> skillset;
+
+
 	/**
 	 * Constructs a new skillset
 	 * @param n number of skills
@@ -37,6 +39,10 @@ public class MemberSkills implements ISkillSet{
 
 	public int getFight() {
 		return skillset.get("fight").getLevel();
+	}
+
+	public int getXp(String skill){
+		return skillset.get(skill).getXp();
 	}
 
 	@Override

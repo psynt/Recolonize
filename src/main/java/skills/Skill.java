@@ -1,22 +1,24 @@
 package skills;
 
 /**
- * Skill containing its name and its level
+ * Skill containing its name and its xp
  * @author nichita
  *
  */
 public class Skill {
-	private int level;
+	private int xp;
 	private final String name;
-	
+	private XpCurve xpc;
+
 	/**
 	 * Constructor
 	 * @param name skill name
-	 * @param level starting level
+	 * @param xp starting xp
 	 */
-	public Skill(String name, int level) {
-		this.level = level;
+	public Skill(String name, int xp) {
+		this.xp = xp;
 		this.name = name;
+		xpc = XCv.apply();
 	}
 	
 	/**
@@ -24,21 +26,28 @@ public class Skill {
 	 * @return skill level
 	 */
 	public int getLevel() {
-		return level;
+		//System.err.println(xp + " is level " + xpc.getLevel(xp));
+		return xpc.getLevel(xp);
 	}
 	/**
-	 * 
-	 * @param level skill level
+	 * Xp limited to 1 000 000
+	 * @param xp skill xp
 	 */
-	public void setLevel(int level) {
-		this.level = level;
+	public void gainXp(int xp) {
+		if(this.xp + xp >=1e6){
+			this.xp = (int)1e6;
+		}
+		this.xp += xp;
 	}
 	/**
 	 * 
-	 * @return skil lname
+	 * @return skill name
 	 */
 	public String getName() {
 		return name;
+	}
+	public int getXp(){
+		return xp;
 	}
 	
 

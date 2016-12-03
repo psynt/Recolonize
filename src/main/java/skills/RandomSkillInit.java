@@ -9,6 +9,7 @@ import java.util.Random;
 public class RandomSkillInit extends SkillInit {
 	private static Random r= new Random();
 	private int max;
+	private XpCurve x= XCv.apply();
 	/**
 	 * 
 	 * @param m maximum value for the random generator
@@ -21,7 +22,7 @@ public class RandomSkillInit extends SkillInit {
 
 	@Override
 	public Skill newSkill() {
-		return new Skill(name,r.nextInt(max)+1);
+		return new Skill(name,x.xpForLevel(r.nextInt(max)+1));
 	}
 
 

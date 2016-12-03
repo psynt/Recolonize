@@ -1,9 +1,9 @@
 package entities;
 
-import java.util.ArrayList;
-
 import skills.MemberSkills;
 import skills.MemberSkillsFactory;
+
+import java.util.ArrayList;
 /**
  * Represents individuals in our Colony
  * @author nichita
@@ -44,6 +44,10 @@ public final class Member extends Entity{
 	@Override
 	public String toString() {
 		return getName() + " has: " + getSearch() + " searching, " + getCook() + " cooking, " + getFight() + " fighting";
+	}
+
+	public MemberSkills getSkillset(){
+		return skillset;
 	}
 
 	@Override
