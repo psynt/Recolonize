@@ -34,6 +34,5 @@ Recolonize.ipr
 Recolonize.iws
 out/
 project/
-src/main/java/skills/XCv.scala
 target/
 /gradlew
