@@ -10,15 +10,13 @@ public class BasicSkillInit extends SkillInit {
 	/**
 	 * Initializes the skill factory with:
 	 * @param n initial created skill value
-	 * @param name skill name
 	 */
-	public BasicSkillInit(int n,String name) {
-		super(name);
+	public BasicSkillInit(int n) {
 		this.n = n;
 	}
 	
 	@Override
-	public Skill newSkill() {
+	public Skill newSkill(String name) {
 		return new Skill(name,x.xpForLevel(n));
 	}
 

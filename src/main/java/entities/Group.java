@@ -5,6 +5,7 @@ import skills.XpCurve;
 
 import java.util.ArrayList;
 
+@Deprecated
 public final class Group extends Entity{
 	private ArrayList<Member> members;
 	private XpCurve x = XCv.apply();
@@ -41,20 +42,20 @@ public final class Group extends Entity{
 		super.setAsssignment(a);
 	}
 
-	@Override
-	public int getCook(){
-		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("cook")).reduce(0, (a ,b)-> a+b));
-	}
-	
-	@Override
-	public int getSearch(){
-		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("search")).reduce(0, (a ,b)-> a+b));
-	}
-	
-	@Override
-	public int getFight(){
-		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("fight")).reduce(0, (a ,b)-> a+b));
-	}
+//	@Override
+//	public int getCook(){
+//		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("cook")).reduce(0, (a ,b)-> a+b));
+//	}
+//
+//	@Override
+//	public int getSearch(){
+//		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("search")).reduce(0, (a ,b)-> a+b));
+//	}
+//
+//	@Override
+//	public int getFight(){
+//		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("fight")).reduce(0, (a ,b)-> a+b));
+//	}
 	
 	@Override
 	public String toString() {
@@ -65,6 +66,21 @@ public final class Group extends Entity{
 	@Override
 	public ArrayList<Member> getAll() {
 		return members;
+	}
+
+	@Override
+	public int getCook() {
+		return 0;
+	}
+
+	@Override
+	public int getSearch() {
+		return 0;
+	}
+
+	@Override
+	public int getFight() {
+		return 0;
 	}
 
 }

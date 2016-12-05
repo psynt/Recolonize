@@ -188,4 +188,9 @@ public class Game implements IGame {
 	public int getUncCount() {
 		return colony.getUncooked();
 	}
+
+	@Override
+	public void addWep(int x) {
+		colony.addWeapons(x);
+	}
 }

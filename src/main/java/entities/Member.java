@@ -1,19 +1,19 @@
 package entities;
 
-import skills.MemberSkills;
 import skills.MemberSkillsFactory;
+import skills.Skill;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 /**
  * Represents individuals in our Colony
  * @author nichita
  *
  */
 public final class Member extends Entity{
-	private final MemberSkills skillset;
-	private boolean weapon;
+	private HashMap<String,Skill> skillset;
 
-	/***
+	/**
 	 * 
 	 * @param name Name of the poor guy
 	 * @param s starting skill level. handled in MemberSkillsFactory, passed as "m"
@@ -30,33 +30,17 @@ public final class Member extends Entity{
 
 	@Override
 	public int getCook() {
-		return skillset.getCook();
+		return skillset.get("cook").getLevel();
 	}
 
 	@Override
 	public int getSearch() {
-		return skillset.getSearch();
+		return skillset.get("search").getLevel();
 	}
 
 	@Override
 	public int getFight() {
-		return skillset.getFight();
-	}
-
-	/**
-	 *
-	 * @return true if given member has a weapon, false if he may only use his fists
-	 */
-	public boolean hasWeapon(){
-		return weapon;
-	}
-
-	/**
-	 * gives or takes poor sod's weapon
-	 * @param newWeapon new value for field weapon
-	 */
-	public void giveTakeWeapon(boolean newWeapon) {
-		weapon = true;
+		return skillset.get("fight").getLevel();
 	}
 
 	@Override
@@ -64,9 +48,15 @@ public final class Member extends Entity{
 		return getName() + " has: " + getSearch() + " searching, " + getCook() + " cooking, " + getFight() + " fighting";
 	}
 
-	public MemberSkills getSkillset(){
-		return skillset;
+	/**
+	 * gain xp
+	 * @param skill skill that xp is gained in
+	 * @param amount amount of xp that is gained
+	 */
+	public void addXp(String skill,int amount){
+		skillset.get(skill).gainXp(amount);
 	}
+
 
 	@Override
 	public ArrayList<Member> getAll() {
