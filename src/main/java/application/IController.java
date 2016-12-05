@@ -5,4 +5,6 @@ import javafx.collections.ObservableList;
 
 public interface IController {
 	void updateList(ObservableList<Entity> e);
+	void lost();
+
 }

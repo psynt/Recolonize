@@ -20,7 +20,7 @@ class SearchEventSpec extends Specification {
         SearchEvent e = new SearchEvent();
 
         when:
-        Colony c = e.findStuff(MemberFactory.gimmie(n));
+        Colony c = SearchEvent.findStuff(MemberFactory.gimmie(n));
 
         then:
         def z = c.members.size() + c.rations + c.uncooked + c.weapons

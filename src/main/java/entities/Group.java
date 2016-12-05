@@ -15,6 +15,7 @@ public final class Group extends Entity{
 	 */
 	public Group( ArrayList<Member> members, String name) {
 		super("*" + name);
+		super.setAsssignment(Assignment.None);
 		super.group = true;
 		this.members = members;
 		
@@ -33,7 +34,13 @@ public final class Group extends Entity{
 	public void add(Member m){
 		members.add(m);
 	}
-	
+
+	@Override
+	public void setAsssignment(Assignment a) {
+		members.stream().forEach(e -> e.setAsssignment(a));
+		super.setAsssignment(a);
+	}
+
 	@Override
 	public int getCook(){
 		return x.getLevel(members.parallelStream().map(e -> e.getSkillset().getXp("cook")).reduce(0, (a ,b)-> a+b));

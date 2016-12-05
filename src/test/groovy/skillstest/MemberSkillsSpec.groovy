@@ -1,12 +1,10 @@
-package skillstest;
+package skillstest
 
-import static org.junit.Assert.*
-import static application.Constants.*
-
-import org.junit.Test
 import skills.MemberSkills
 import skills.MemberSkillsFactory
 import spock.lang.Specification
+
+import static application.Constants.NUM_SKILLS
 
 class MemberSkillsSpec extends Specification {
 

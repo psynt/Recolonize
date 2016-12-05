@@ -1,14 +1,5 @@
 package application;
 
-import static application.Constants.NUM_SKILLS;
-import static application.Constants.SKILL_NAMES;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
-import cycle.DummyGame;
 import cycle.Game;
 import cycle.IGame;
 import entities.Assignment;
@@ -19,22 +10,24 @@ import guiparts.ExistingGroupController;
 import guiparts.NewGroupController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import static application.Constants.NUM_SKILLS;
+import static application.Constants.SKILL_NAMES;
 
 public class SampleController implements Initializable,IController{
 
@@ -54,7 +47,10 @@ public class SampleController implements Initializable,IController{
 	@FXML TextField food;
 	@FXML TextField unc;
 	@FXML TextField wep;
-	
+
+	@FXML Button go;
+
+	private boolean lost;
 	private IGame ig;
 	private ObservableList<Entity> list = FXCollections.observableArrayList();
 	
@@ -68,6 +64,11 @@ public class SampleController implements Initializable,IController{
 			System.out.println(it.toString());
 		}
 		System.out.println();
+	}
+
+	@Override
+	public void lost(){
+		lost = true;
 	}
 	
 	private synchronized void add(Entity m){
@@ -84,6 +85,8 @@ public class SampleController implements Initializable,IController{
 	
 	public void updateList(ObservableList<Entity> e){
 		list = e;
+		table.setItems(list);
+		table.refresh();
 	}
 
 	@Override
@@ -106,7 +109,7 @@ public class SampleController implements Initializable,IController{
 	
 	private void putInGroup(Group g){
 		ArrayList<Entity> a = new ArrayList<Entity>(table.getSelectionModel().getSelectedItems());
-		a.stream().filter(e -> !e.isGroup()).forEach(e -> {rm(e); g.add((Member)e);});
+		a.stream().filter(e -> !e.isGroup()).forEach(e -> {e.setAsssignment(Assignment.None);rm(e); g.add((Member)e);});
 		
 	}
 
@@ -195,6 +198,15 @@ public class SampleController implements Initializable,IController{
 
 	@FXML public void next() {
 		textymexty.setText(ig.next());
+		table.refresh();
+
+		//System.err.println(list);
+
+		if(lost){
+			go.setDisable(true);
+		}
+
+		update();
 		
 		
 	}

@@ -6,6 +6,7 @@ package skills;
  */
 public class BasicSkillInit extends SkillInit {
 	private int n;
+	private XpCurve x= XCv.apply();
 	/**
 	 * Initializes the skill factory with:
 	 * @param n initial created skill value
@@ -18,7 +19,7 @@ public class BasicSkillInit extends SkillInit {
 	
 	@Override
 	public Skill newSkill() {
-		return new Skill(name, n);
+		return new Skill(name,x.xpForLevel(n));
 	}
 
 }

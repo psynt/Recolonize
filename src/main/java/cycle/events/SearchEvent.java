@@ -14,13 +14,13 @@ public class SearchEvent extends Event{
         super(Probabilities.Certain);
     }
 
-    private ArrayList<Byte> find(Member m){
+    private static ArrayList<Byte> find(Member m){
         ArrayList<Byte> res = new ArrayList<>();
         Random r = new Random();
         int rv;
         do{
             rv = r.nextInt(100);
-            if(rv<5) {
+            if(rv<2) {
                 res.add((byte)3);
             }else
             if (rv<40){
@@ -36,7 +36,7 @@ public class SearchEvent extends Event{
         return res;
     }
 
-    public Colony findStuff(ArrayList<Member> m){
+    public static Colony findStuff(ArrayList<Member> m){
 
         //rat,unc,wep,mem
         int[] finds = new int[4];

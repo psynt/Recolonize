@@ -10,8 +10,6 @@ import java.util.Random;
  */
 public class ZombiesEvent extends Event {
 
-    private int zombies;
-
     public ZombiesEvent(){
         super(Probabilities.Certain);
     }
@@ -21,7 +19,7 @@ public class ZombiesEvent extends Event {
      * @param m Member that is doing the killing
      * @return number of zombies deaded by Mr. m
      */
-    private int killZombies(Member m){
+    private static int killZombies(Member m){
         int div = m.hasWeapon()?2:1;
         int res=0;
         int cap = 40 + (m.getFight() / 10);
@@ -37,8 +35,8 @@ public class ZombiesEvent extends Event {
      * @param day current day
      * @return number of zombies generated
      */
-    public int generateZombies(int day){
-        zombies = (int)(Math.random()*day*2);
+    public static int generateZombies(int day){
+        int zombies = 3 + day/2 + (int)(Math.random()*day);
         return zombies;
     }
 
@@ -52,7 +50,7 @@ public class ZombiesEvent extends Event {
      *      - =0 if colony barely makes it
      *      - >0 if zombies break in
      */
-    public int killManyZombies(int zombies, ArrayList<Member> warriors){
+    public static int killManyZombies(int zombies, ArrayList<Member> warriors){
         int zombiecasualties = warriors.parallelStream().map(e -> killZombies(e)).reduce(0,(a,b) -> a+b);
         return zombies - zombiecasualties;
     }

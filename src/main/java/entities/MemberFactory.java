@@ -1,12 +1,12 @@
 package entities;
 
-import java.util.ArrayList;
-
 import collections.NameDispenser;
+
+import java.util.ArrayList;
 
 public class MemberFactory {
 	public static Member gimmie(){
-		return new Member(NameDispenser.next(), 10);
+		return new Member(NameDispenser.next(), 3);
 	}
 	public static ArrayList<Member> gimmie(int n){
 		ArrayList<Member> m = new ArrayList<Member>(n);

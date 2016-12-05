@@ -1,12 +1,10 @@
 package eventstest
 
-import application.Constants
 import cycle.events.CookEvent
 import entities.MemberFactory
 import spock.lang.Specification
 import spock.lang.Subject
 import spock.lang.Unroll
-
 /**
  * Created by nichita on 03.12.2016.
  */
@@ -20,10 +18,10 @@ class CookEventSpec extends Specification {
         CookEvent e = new CookEvent();
 
         when:
-        def z = e.cook(MemberFactory.gimmie(guys),food);
+        def z = CookEvent.cook(MemberFactory.gimmie(guys),food);
 
         then:
-        z<= Constants.UNC_RAT * food;
+        z <= food;
 
         where:
         guys    ||  food
