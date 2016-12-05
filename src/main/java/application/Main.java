@@ -1,19 +1,24 @@
 package application;
 	
+import collections.NameDispenser;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Gui.fxml"));
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
+			Scene scene = new Scene(root);
+			//scene.getStylesheets().add(getClass().getResource("./Res/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -22,6 +27,12 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		//System.out.println(new File("Sample.fxml").getAbsolutePath());
+		try {
+			NameDispenser.init();
+		}catch(ParserConfigurationException | SAXException | IOException e){
+			e.printStackTrace();
+		}
 		launch(args);
 	}
 }
