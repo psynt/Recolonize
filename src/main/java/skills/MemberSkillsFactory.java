@@ -1,5 +1,7 @@
 package skills;
 
+import java.util.HashMap;
+
 import static application.Constants.*;
 
 public class MemberSkillsFactory {
@@ -9,14 +11,15 @@ public class MemberSkillsFactory {
 	 * @param m maximum value [1,m] that skills can start with
 	 * @return Member skillset
 	 */
-	public static MemberSkills create(int m){
-		SkillInit s=new RandomSkillInit(m,"fight");
-		MemberSkills ms =  new MemberSkills(NUM_SKILLS);
+	public static HashMap<String,Skill> create(int m){
+		HashMap<String,Skill> s= new HashMap<>();
+		SkillInit init = new RandomSkillInit(m);
+
 		for(String name : SKILL_NAMES){
-			s.setName(name);
-			ms.add(s.newSkill());
+			Skill sk = init.newSkill(name);
+			s.put(name,sk);
 		}
-		return ms;
+		return s;
 	}
 
 }

@@ -34,13 +34,16 @@ public class SampleController implements Initializable,IController{
 	@FXML TableView<Entity> table;
 	@FXML TableColumn<Entity,String> name;
 	@FXML TableColumn<Entity,String> assignment;
+	@FXML TableColumn<Entity,String> hasWep;
 	
 	@FXML ContextMenu menu1;
 	@FXML MenuItem newGroup;
 	@FXML MenuItem unGroup;
 	@FXML MenuItem delGr;
 	@FXML MenuItem add;
-	
+	@FXML MenuItem gvw;
+	@FXML MenuItem tkw;
+
 	@FXML TextArea textymexty;
 
 	@FXML TextField mem;
@@ -103,6 +106,7 @@ public class SampleController implements Initializable,IController{
 		
 		name.setCellValueFactory(new PropertyValueFactory<Entity,String>("name"));
 		assignment.setCellValueFactory(new PropertyValueFactory<Entity,String>("assignment"));
+		hasWep.setCellValueFactory(new PropertyValueFactory<Entity, String>("weapon"));
 		table.setItems(list);
 		update();
 	}
@@ -116,13 +120,22 @@ public class SampleController implements Initializable,IController{
 
 	@FXML public void checkMenuItems() {
 		ArrayList<Entity> a = new ArrayList<Entity>(table.getSelectionModel().getSelectedItems());
-		boolean del = a.size() > 0 && !a.parallelStream().filter(e -> !e.isGroup()).map(e -> !e.isGroup()).reduce(false, (x,y) -> x||y);
-		delGr.setDisable(!del);
-		
-		boolean existing = a.size() > 0 && !a.parallelStream().filter(e -> e.isGroup()).map(e -> e.isGroup()).reduce(false, (x,y) -> x||y)
-				&& list.parallelStream().filter(e -> e.isGroup()).map(e -> e.isGroup()).reduce(false, (y,z) -> y||z);
-		add.setDisable(!existing);
-		
+
+//		//delete group
+//		boolean del = a.size() > 0 && !a.parallelStream().anyMatch(e -> e.isGroup());//filter(e -> !e.isGroup()).map(e -> !e.isGroup()).reduce(false, (x,y) -> x||y);
+//		delGr.setDisable(!del);
+//
+//
+//		//add to group
+//		boolean existing = a.size() > 0 && !a.parallelStream().anyMatch(e -> e.isGroup())//filter(e -> e.isGroup()).map(e -> e.isGroup()).reduce(false, (x,y) -> x||y)
+//				&& list.parallelStream().anyMatch(e -> e.isGroup());//filter(e -> e.isGroup()).map(e -> e.isGroup()).reduce(false, (y,z) -> y||z);
+//		add.setDisable(!existing);
+
+		//arm
+		long selected = a.parallelStream().filter(e -> !e.hasWeapon()).count();
+		boolean enoughWep = selected <= Integer.parseInt(wep.getText());
+		gvw.setDisable(!enoughWep);
+
 	}
 
 
@@ -194,13 +207,12 @@ public class SampleController implements Initializable,IController{
 		food.setText(ig.getFoodCount() + "");
 		unc.setText(ig.getUncCount() + "");
 		wep.setText(ig.getWepCount() + "");
+		table.refresh();
 	}
 
 	@FXML public void next() {
 		textymexty.setText(ig.next());
 		table.refresh();
-
-		//System.err.println(list);
 
 		if(lost){
 			go.setDisable(true);
@@ -215,14 +227,33 @@ public class SampleController implements Initializable,IController{
 		
 		Assignment a = Assignment.toAssignment(((MenuItem)event.getSource()).getText());
 		
-		//System.out.println(a);
-		
 		table.getSelectionModel().getSelectedIndices().parallelStream().forEach(e -> list.get(e).setAsssignment(a));
 		table.refresh();
-		
-		
+
 	}
 
 
-	
+	@FXML
+	public void gw(ActionEvent actionEvent) {
+		ArrayList<Entity> a = new ArrayList<Entity>();
+		table.getSelectionModel().getSelectedItems().stream().filter(e -> !e.hasWeapon()).forEach(e -> a.add(e));
+
+		a.forEach(e -> e.arm());
+		ig.addWep(-a.size());
+
+		update();
+
+	}
+
+	@FXML
+	public void tw(ActionEvent actionEvent) {
+		ArrayList<Entity> a = new ArrayList<Entity>();
+		table.getSelectionModel().getSelectedItems().stream().filter(e -> e.hasWeapon()).forEach(e -> a.add(e));
+
+		a.forEach(e -> e.disArm());
+		ig.addWep(a.size());
+
+		update();
+
+	}
 }

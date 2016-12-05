@@ -40,6 +40,9 @@ public class Colony {
 	public void addRations(int rat){
 		this.rations += rat;
 	}
+	public void addWeapons(int wep){
+		this.weapons += wep;
+	}
 
 	public ArrayList<Member> kill(int n){
 

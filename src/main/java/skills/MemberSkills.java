@@ -4,8 +4,9 @@ import java.util.Hashtable;
 /**
  * Skillset for members
  * @author nichita
- *
+ * @deprecated not used anymore
  */
+@Deprecated
 public class MemberSkills implements ISkillSet{
 
 	private Hashtable<String,Skill> skillset;

@@ -1,6 +1,7 @@
 package cycle.events;
 
 import entities.Member;
+import skills.XPRates;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,6 +15,8 @@ public class ZombiesEvent extends Event {
         super(Probabilities.Certain);
     }
 
+    private static final String SKILL = "fight";
+
     /**
      * Kills zombies in the name of m
      * @param m Member that is doing the killing
@@ -26,7 +29,8 @@ public class ZombiesEvent extends Event {
         Random r = new Random();
         do{
             res++;
-        }while(res <= cap&& r.nextInt()/div < m.getFight());
+            m.addXp(SKILL, XPRates.ZOM_KILLED);
+        }while(res <= cap&& r.nextInt(100)/div < m.getFight());
         return res;
     }
 

@@ -1,12 +1,13 @@
 package cycle;
 
-import java.util.ArrayList;
-
 import application.IController;
 import entities.Entity;
 import entities.Member;
 import javafx.collections.FXCollections;
 
+import java.util.ArrayList;
+
+@Deprecated
 public class DummyGame implements IGame {
 	private ArrayList<Entity> list = new ArrayList<Entity>();
 	private IController ic;
@@ -63,6 +64,10 @@ public class DummyGame implements IGame {
 		return colony.getUncooked();
 	}
 
-	
+	@Override
+	public void addWep(int x) {
+		//do nothing
+	}
+
 
 }

@@ -1,7 +1,8 @@
 package cycle;
 
-import java.util.ArrayList;
 import entities.Entity;
+
+import java.util.ArrayList;
 
 public interface IGame {
 	void setEntityList(ArrayList<Entity> list);
@@ -10,7 +11,9 @@ public interface IGame {
 	int getFoodCount();
 	int getWepCount();
 	int getUncCount();
-	
+
+	void addWep(int x);
+
 	/**
 	 * when the user presses the "next" button, this gets called
 	 * @return result of the day as a string

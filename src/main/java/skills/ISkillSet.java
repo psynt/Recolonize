@@ -3,8 +3,9 @@ package skills;
 /**
  * all skillsets should implement this
  * @author nichita
- *
+ * @deprecated not used anymore
  */
+@Deprecated
 public interface ISkillSet {
 	/**
 	 * 

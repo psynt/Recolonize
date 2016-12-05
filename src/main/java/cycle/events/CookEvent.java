@@ -2,6 +2,7 @@ package cycle.events;
 
 import application.Functions;
 import entities.Member;
+import skills.XPRates;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,6 +15,7 @@ public class CookEvent extends Event {
         super(Probabilities.Certain);
     }
 
+    private static final String SKILL = "cook";
 
     private static int humanCook(Member m){
         int res=0;
@@ -21,7 +23,8 @@ public class CookEvent extends Event {
         Random r = new Random();
         do{
             res++;
-        }while(res <= cap&& r.nextInt() < m.getCook());
+            m.addXp(SKILL, XPRates.FOOD_COOKED);
+        }while(res <= cap&& r.nextInt(100) < m.getCook());
         return res;
     }
 
