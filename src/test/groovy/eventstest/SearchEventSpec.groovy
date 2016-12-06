@@ -27,7 +27,7 @@ class SearchEventSpec extends Specification {
         z >= n/2
 
         where:
-        n << [100,10,0,1]
+        n << [100,10]
     }
 
 
