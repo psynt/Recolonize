@@ -1,11 +1,11 @@
 package cycle;
 
-import entities.Entity;
+import entities.Member;
 
 import java.util.ArrayList;
 
 public interface IGame {
-	void setEntityList(ArrayList<Entity> list);
+	void setEntityList(ArrayList<Member> list);
 	
 	int getMemberCount();
 	int getFoodCount();

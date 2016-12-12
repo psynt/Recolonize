@@ -28,9 +28,6 @@
                      <contextMenu>
                         <ContextMenu fx:id="menu1">
                           <items>
-                           <!-- <MenuItem fx:id="delGr" disable="true" mnemonicParsing="false" onAction="#unGroup" text="Ungroup" />
-                            <MenuItem fx:id="add" mnemonicParsing="false" onAction="#addToGroup" text="Add to group" />
-                            <MenuItem fx:id="newGroup" mnemonicParsing="false" onAction="#newGroup" text="New group" />-->
                               <MenuItem fx:id="gvw" mnemonicParsing="false" onAction="#gw" text="Give weapons" />
                               <MenuItem fx:id="tkw" mnemonicParsing="false" onAction="#tw" text="Take weapons" />
                               <SeparatorMenuItem mnemonicParsing="false" />

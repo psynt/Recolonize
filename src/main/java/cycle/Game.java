@@ -5,7 +5,6 @@ import application.IController;
 import cycle.events.CookEvent;
 import cycle.events.SearchEvent;
 import cycle.events.ZombiesEvent;
-import entities.Entity;
 import entities.Member;
 import javafx.collections.FXCollections;
 
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 public class Game implements IGame {
 	private Colony colony;
 	private IController ic;
-	private ArrayList<Entity> list = new ArrayList<Entity>();
+	private ArrayList<Member> list = new ArrayList<>();
 	private int dayCount = 0;
 	
 	public Game(IController ic) {
@@ -23,20 +22,8 @@ public class Game implements IGame {
 		list.addAll(colony.getMembers());
 		this.ic.updateList(FXCollections.observableArrayList(colony.getMembers()));
 	}
-
 	
-	public static ArrayList<Member> unroll(ArrayList<Entity> a){
-		ArrayList<Member> r = new ArrayList<Member>();
-		
-		for (Entity m : a) {
-			r.addAll(m.getAll());
-		}
-		
-		return r;
-		
-	}
-	
-	public void setEntityList(ArrayList<Entity> list) {
+	public void setEntityList(ArrayList<Member> list) {
 		this.list = list;
 	}
 
@@ -125,7 +112,7 @@ public class Game implements IGame {
 //		sb.append("Pending implementation");
 		
 		//doStuff()
-		colony.updateMembers(unroll(list));
+		colony.updateMembers(list);
 
 		sb.append(finishDay());
 
