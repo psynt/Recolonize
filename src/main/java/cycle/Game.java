@@ -12,29 +12,18 @@ import javafx.collections.FXCollections;
 import java.util.ArrayList;
 
 public class Game implements IGame {
-	private Day day;
-	private Night night;
 	private Colony colony;
 	private IController ic;
 	private ArrayList<Entity> list = new ArrayList<Entity>();
 	private int dayCount = 0;
 	
 	public Game(IController ic) {
-		day = new Day();
-		night = new Night();
 		colony = new Colony();
 		this.ic = ic;
 		list.addAll(colony.getMembers());
 		this.ic.updateList(FXCollections.observableArrayList(colony.getMembers()));
 	}
-	
-	public void performDay() {
-		day.perform();
-	}
-	
-	public void performNight() {
-		night.perform();
-	}
+
 	
 	public static ArrayList<Member> unroll(ArrayList<Entity> a){
 		ArrayList<Member> r = new ArrayList<Member>();
@@ -57,7 +46,7 @@ public class Game implements IGame {
 		ArrayList<Member> searchParty = new ArrayList<>();
 		ArrayList<Member> chefs = new ArrayList<>();
 
-		colony.getMembers().stream().forEach(e -> {switch(e.getAssignment()){
+		colony.getMembers().forEach(e -> {switch(e.getAssignment()){
 			case "Cook": chefs.add(e);
 				break;
 			case "Search": searchParty.add(e);

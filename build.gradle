@@ -25,6 +25,11 @@ repositories {
 
 sourceSets.main.scala.srcDir "src/main/java"
 sourceSets.main.java.srcDirs = []
+jar {
+    manifest {
+        attributes 'Main-Class': 'application.Main'
+    }
+}
 
 // In this section you declare the dependencies for your production and test code
 dependencies {

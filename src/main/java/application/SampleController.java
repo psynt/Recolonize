@@ -4,24 +4,14 @@ import cycle.Game;
 import cycle.IGame;
 import entities.Assignment;
 import entities.Entity;
-import entities.Group;
-import entities.Member;
-import guiparts.ExistingGroupController;
-import guiparts.NewGroupController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -37,9 +27,6 @@ public class SampleController implements Initializable,IController{
 	@FXML TableColumn<Entity,String> hasWep;
 	
 	@FXML ContextMenu menu1;
-	@FXML MenuItem newGroup;
-	@FXML MenuItem unGroup;
-	@FXML MenuItem delGr;
 	@FXML MenuItem add;
 	@FXML MenuItem gvw;
 	@FXML MenuItem tkw;
@@ -80,11 +67,7 @@ public class SampleController implements Initializable,IController{
 	private synchronized void rm(Entity m){
 		list.remove(m);
 	}
-	
-	private synchronized void newGroup(String s){
-		Group g = new Group(s);
-		add(g);
-	}
+
 	
 	public void updateList(ObservableList<Entity> e){
 		list = e;
@@ -110,96 +93,15 @@ public class SampleController implements Initializable,IController{
 		table.setItems(list);
 		update();
 	}
-	
-	private void putInGroup(Group g){
-		ArrayList<Entity> a = new ArrayList<Entity>(table.getSelectionModel().getSelectedItems());
-		a.stream().filter(e -> !e.isGroup()).forEach(e -> {e.setAsssignment(Assignment.None);rm(e); g.add((Member)e);});
-		
-	}
-
 
 	@FXML public void checkMenuItems() {
 		ArrayList<Entity> a = new ArrayList<Entity>(table.getSelectionModel().getSelectedItems());
-
-//		//delete group
-//		boolean del = a.size() > 0 && !a.parallelStream().anyMatch(e -> e.isGroup());//filter(e -> !e.isGroup()).map(e -> !e.isGroup()).reduce(false, (x,y) -> x||y);
-//		delGr.setDisable(!del);
-//
-//
-//		//add to group
-//		boolean existing = a.size() > 0 && !a.parallelStream().anyMatch(e -> e.isGroup())//filter(e -> e.isGroup()).map(e -> e.isGroup()).reduce(false, (x,y) -> x||y)
-//				&& list.parallelStream().anyMatch(e -> e.isGroup());//filter(e -> e.isGroup()).map(e -> e.isGroup()).reduce(false, (y,z) -> y||z);
-//		add.setDisable(!existing);
 
 		//arm
 		long selected = a.parallelStream().filter(e -> !e.hasWeapon()).count();
 		boolean enoughWep = selected <= Integer.parseInt(wep.getText());
 		gvw.setDisable(!enoughWep);
 
-	}
-
-
-	@FXML public void unGroup() {
-		ArrayList<Group> a = new ArrayList<Group>();
-		table.getSelectionModel().getSelectedItems()
-			.stream().filter(e -> e.isGroup())
-				.forEach(e -> a.add((Group) e));
-		
-		a.stream().forEach(e -> {
-			e.getAll().forEach(m -> {
-				add(m);
-			});
-			rm(e);
-		});
-	}
-
-
-
-
-	@FXML public void newGroup() throws IOException {
-		Stage stage = new Stage();
-		
-		FXMLLoader l = new FXMLLoader(getClass().getResource("/guiparts/NewGroup.fxml"));
-		
-		l.setController(new NewGroupController(new Report<String>(){
-			@Override
-			public void tell(String text) {
-				newGroup(text);
-			}
-		}));
-		
-		AnchorPane ac=l.load();
-		
-		stage.setScene(new Scene(ac));
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initOwner(table.getScene().getWindow());
-		stage.showAndWait();
-	}
-
-
-	@FXML public void addToGroup() throws IOException {
-		Stage stage = new Stage();
-		
-		FXMLLoader l = new FXMLLoader(getClass().getResource("/guiparts/ExistingGroup.fxml"));
-		
-		ObservableList<Group> groupList = FXCollections.observableArrayList();
-				
-		list.stream().filter(e -> e.isGroup()).forEach(e -> groupList.add((Group)e));
-		
-		l.setController(new ExistingGroupController(new Report<Group>(){
-			@Override
-			public void tell(Group text) {
-				putInGroup(text);
-			}
-		},groupList));
-		
-		AnchorPane ac=l.load();
-		
-		stage.setScene(new Scene(ac));
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initOwner(table.getScene().getWindow());
-		stage.showAndWait();
-		
 	}
 	
 	private void update(){
