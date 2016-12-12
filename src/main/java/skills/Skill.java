@@ -36,6 +36,7 @@ public class Skill {
 	public void gainXp(int xp) {
 		if(this.xp + xp >=1e6){
 			this.xp = (int)1e6;
+			return;
 		}
 		this.xp += xp;
 	}

@@ -19,17 +19,17 @@
          <children>
             <HBox prefHeight="320.0" prefWidth="460.0">
                <children>
-                  <TableView fx:id="table" onContextMenuRequested="#checkMenuItems">
+                  <TableView fx:id="table" onContextMenuRequested="#checkMenuItems" prefHeight="319.0" prefWidth="442.0">
                     <columns>
-                      <TableColumn fx:id="assignment" prefWidth="101.0" text="Assignment" />
-                      <TableColumn fx:id="name" prefWidth="70.0" text="Name" />
+                      <TableColumn fx:id="assignment" prefWidth="95.0" text="Assignment" />
+                        <TableColumn fx:id="hasWep" prefWidth="67.0" text="Weapon" />
+                      <TableColumn fx:id="name" prefWidth="59.0" text="Name" />
                     </columns>
                      <contextMenu>
                         <ContextMenu fx:id="menu1">
                           <items>
-                            <MenuItem fx:id="delGr" disable="true" mnemonicParsing="false" onAction="#unGroup" text="Ungroup" />
-                            <MenuItem fx:id="add" mnemonicParsing="false" onAction="#addToGroup" text="Add to group" />
-                            <MenuItem fx:id="newGroup" mnemonicParsing="false" onAction="#newGroup" text="New group" />
+                              <MenuItem fx:id="gvw" mnemonicParsing="false" onAction="#gw" text="Give weapons" />
+                              <MenuItem fx:id="tkw" mnemonicParsing="false" onAction="#tw" text="Take weapons" />
                               <SeparatorMenuItem mnemonicParsing="false" />
                               <MenuItem disable="true" mnemonicParsing="false" text="Assign to:" />
                               <MenuItem mnemonicParsing="false" onAction="#assign" text="None" />

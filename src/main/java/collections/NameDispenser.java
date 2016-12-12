@@ -1,16 +1,14 @@
 package collections;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class NameDispenser {
 	private static ArrayList<String> names = null;
@@ -18,10 +16,9 @@ public class NameDispenser {
 	
 	public static void init() throws ParserConfigurationException, SAXException, IOException {
 		names = new ArrayList<String>();
-		File file = new File("Res/Names.xml");
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		Document document = documentBuilder.parse(file);
+		Document document = documentBuilder.parse(NameDispenser.class.getResourceAsStream("/Names.xml"));
 		NodeList nl = document.getElementsByTagName("name");
 		for(int i = 0 ; i<nl.getLength() ; i++){
 			names.add(nl.item(i).getTextContent());
