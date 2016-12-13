@@ -19,7 +19,7 @@ public class Game implements IGame {
 	public Game(IController ic) {
 		colony = new Colony();
 		this.ic = ic;
-		list.addAll(colony.getMembers());
+		list=colony.getMembers();
 		this.ic.updateList(FXCollections.observableArrayList(colony.getMembers()));
 	}
 	
@@ -124,8 +124,9 @@ public class Game implements IGame {
 
 		sb.append(startDay());
 
-		list.clear();
-		list.addAll(colony.getMembers());
+		list=colony.getMembers();
+
+		System.err.println(list);
 
 		ic.updateList(FXCollections.observableArrayList(list));
 		
