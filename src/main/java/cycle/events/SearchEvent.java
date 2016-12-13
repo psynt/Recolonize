@@ -22,6 +22,7 @@ public class SearchEvent extends Event{
         Random r = new Random();
         int rv;
         do{
+            //add possibility to find an enemy and roll your fight againt his.
             rv = r.nextInt(100);
             if(rv<2) {  //survivor
                 res.add((byte)3);
