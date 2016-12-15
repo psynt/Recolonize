@@ -107,10 +107,10 @@ public class Colony {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		sb.append(rations + " rations\n" +
-				weapons + " weapons\n" +
-				uncooked + " unc\n" +
-				members.size() + " survivors:\n");
+		sb.append(rations + " rations\n");
+		sb.append(weapons + " weapons\n");
+		sb.append(uncooked + " unc\n");
+		sb.append(members.size() + " survivors:\n");
 
 		members.forEach(e -> sb.append(e.getName()));
 		sb.append("\n");

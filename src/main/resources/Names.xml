@@ -8,6 +8,7 @@
  <name>Amy</name>
  <name>Bob</name>
  <name>Jane</name>
+ <name>John</name>
  <name>Sam</name>
  <name>Jim</name>
  <name>Andy</name>
@@ -19,5 +20,4 @@
  <name>Cliche</name>
  <name>NotDrunk</name>
  <name>WillYouMarryMe</name>
- <name>John</name>
 </namelist>

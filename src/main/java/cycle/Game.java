@@ -81,7 +81,7 @@ public class Game implements IGame {
 			sb.append(res + " zombies break through your defences. They kill some of your colony members.\n");
 			//kill res members here
 			ArrayList<Member> dead = colony.kill(res);
-			dead.forEach(e -> sb.append(e.getName()) );
+			dead.forEach(e -> sb.append(e.getName() + ",") );
 			sb.append(" die.\n");
 		}
 		//zombies end
@@ -126,7 +126,7 @@ public class Game implements IGame {
 
 		list=colony.getMembers();
 
-		System.err.println(list);
+		//System.err.println(list);
 
 		ic.updateList(FXCollections.observableArrayList(list));
 		

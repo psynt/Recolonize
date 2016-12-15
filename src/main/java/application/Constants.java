@@ -1,5 +1,8 @@
 package application;
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public interface Constants {
 	
 	int NUM_SKILLS = 3;
@@ -10,9 +13,31 @@ public interface Constants {
 	int INIT_WEAPONS = 0;
 	int	INIT_UNC = 0;
 
+	int POS_FINDS = 4;
+
 	/**
 	 * uncooked -> ration ratio
 	 */
 	int UNC_RAT = 3;
+
+
+
+	Function<Integer,int[]> identity = e ->{
+		int[] res = new int[e];
+		for (int i = 0; i < res.length; i++) {
+			res[i]=0;
+		}
+		return res;
+	};
+
+	BiFunction<int[],int[],int[]> addArrays = (a, b) -> {
+		int[] res = new int[4];
+		for (int i = 0; i < a.length; i++) {
+			res[i]=a[i]+b[i];
+		}
+		return res;
+	};
+
+
 
 }
