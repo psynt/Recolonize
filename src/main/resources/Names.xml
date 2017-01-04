@@ -5,19 +5,33 @@
 ]>
 
 <namelist>
- <name>Amy</name>
- <name>Bob</name>
- <name>Jane</name>
- <name>John</name>
- <name>Sam</name>
- <name>Jim</name>
- <name>Andy</name>
- <name>Ben</name>
- <name>ShotGlass</name>
- <name>Dingus</name>
- <name>Jason</name>
- <name>Shoe</name>
- <name>Cliche</name>
- <name>NotDrunk</name>
- <name>WillYouMarryMe</name>
+
+    <name>Amy</name>
+    <name>DothNotSerious</name>
+    <name>Bob</name>
+    <name>Jane</name>
+    <name>MichelleJackson</name>
+    <name>John</name>
+    <name>Sam</name>
+    <name>Jim</name>
+    <name>DarthBeggar</name>
+    <name>Andy</name>
+    <name>Willie</name>
+    <name>Johnson</name>
+    <name>Ben</name>
+    <name>Hitter</name>
+    <name>ShotGlass</name>
+    <name>Dingus</name>
+    <name>GeneralPurpose</name>
+    <name>Nagito</name>
+    <name>Hairy</name>
+    <name>Donnie</name>
+    <name>Tramp</name>
+    <name>Jason</name>
+    <name>Shoe</name>
+    <name>Cliche</name>
+    <name>NotDrunk</name>
+    <name>Willy</name>
+    <name>WillYouMarryMe</name>
+
 </namelist>
