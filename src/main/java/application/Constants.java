@@ -11,14 +11,14 @@ public interface Constants {
 	int INIT_SURV = 10;
 	int INIT_RATIONS = 2 * INIT_SURV;
 	int INIT_WEAPONS = 0;
-	int	INIT_UNC = 0;
+	int	INIT_UNC = 10;
 
 	int POS_FINDS = 4;
 
 	/**
 	 * uncooked -> ration ratio
 	 */
-	int UNC_RAT = 3;
+	int UNC_RAT = 4;
 
 
 

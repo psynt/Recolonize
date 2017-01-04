@@ -26,19 +26,19 @@ public class SearchEvent extends Event{
         do{
             //add possibility to find an enemy and roll your fight against his.
             rv = r.nextInt(100);
-            if(rv<2) {  //survivor
+            if(rv<4) {  //survivor
                 res[3]++;
                 m.addXp(SKILL, XPRates.SURV_FOUND);
             }else
-            if (rv<10){ //weapon
+            if (rv<7){ //weapon
                 res[2]++;
                 m.addXp(SKILL, XPRates.WEP_FOUND);
             }else
-            if (rv<40){ //unc
+            if (rv<45){ //unc
                 res[1]++;
                 m.addXp(SKILL, XPRates.UNC_FOUND);
             }else
-            if (rv<50){ //food
+            if (rv<55){ //food
                 res[0]++;
                 m.addXp(SKILL, XPRates.RAT_FOUND);
             }

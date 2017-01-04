@@ -27,24 +27,10 @@ public class Game implements IGame {
 		this.list = list;
 	}
 
-	private StringBuilder finishDay(){
+	private StringBuilder doDaSearching(ArrayList<Member> lookers){
 		StringBuilder sb = new StringBuilder();
+		Colony finds = SearchEvent.findStuff(lookers);
 
-		ArrayList<Member> searchParty = new ArrayList<>();
-		ArrayList<Member> chefs = new ArrayList<>();
-
-		colony.getMembers().forEach(e -> {switch(e.getAssignment()){
-			case "Cook": chefs.add(e);
-				break;
-			case "Search": searchParty.add(e);
-				break;
-		}
-		});
-
-		Colony finds = SearchEvent.findStuff(searchParty);
-		int unc = CookEvent.cook(chefs,colony.getUncooked());
-
-		//search results
 		sb.append("Your search party finds:\n" +
 				finds.getRations() + " rations\n" +
 				finds.getUncooked() + " uncooked food\n" +
@@ -55,20 +41,27 @@ public class Game implements IGame {
 
 		sb.append("\n");
 
-		//end search results
-		//cooking results
+		colony.merge(finds);
+
+		return sb;
+	}
+
+	private StringBuilder doDaCooking(ArrayList<Member> chefs){
+		StringBuilder sb = new StringBuilder();
+		int unc = CookEvent.cook(chefs,colony.getUncooked());
 
 		sb.append("Meanwhile, your " + chefs.size() + " chefs cook " + unc + " raw food into " + unc * Constants.UNC_RAT
 				+ " rations of food \n");
 
-		finds.addRations(unc * Constants.UNC_RAT);
-		finds.addUncooked(-unc);
+		colony.addRations(unc * Constants.UNC_RAT);
+		colony.addUncooked(-unc);
 
-		//cooking end
 
-		colony.merge(finds);
+		return sb;
+	}
 
-		//zombies start
+	private StringBuilder doDaKilling(){
+		StringBuilder sb = new StringBuilder();
 		int zombies = ZombiesEvent.generateZombies(dayCount);
 		sb.append("\n" + zombies + " zombies attack your poor colony tonight.\n");
 
@@ -84,9 +77,12 @@ public class Game implements IGame {
 			dead.forEach(e -> sb.append(e.getName() + ",") );
 			sb.append(" die.\n");
 		}
-		//zombies end
 
-		//meal start
+		return sb;
+	}
+
+	private StringBuilder doDaEating(){
+		StringBuilder sb = new StringBuilder();
 		int eaten = colony.getSurvivors();
 
 		sb.append("Late night feast: your colony members eat.\n");
@@ -95,7 +91,7 @@ public class Game implements IGame {
 			sb.append("Food is, however, not sufficient.\n");
 			ArrayList<Member> dead = colony.kill(-colony.getRations());
 			dead.forEach(e -> sb.append(e.getName()));
-			sb.append("\nDie of hunger.\n");
+			sb.append("\nDied of hunger.\n");
 			colony.setRations(0);
 		}else if(colony.getRations() < 5){
 			sb.append("Food is running low!!!\n");
@@ -104,14 +100,32 @@ public class Game implements IGame {
 		return sb;
 	}
 
+	private StringBuilder finishDay(){
+		StringBuilder sb = new StringBuilder();
+
+		ArrayList<Member> searchParty = new ArrayList<>();
+		ArrayList<Member> chefs = new ArrayList<>();
+
+		colony.getMembers().forEach(e -> {switch(e.getAssignment()){
+			case "Cook": chefs.add(e);
+				break;
+			case "Search": searchParty.add(e);
+				break;
+		}
+		});
+
+		if(searchParty.size()>0) sb.append(doDaSearching(searchParty));
+		if(chefs.size()>0) sb.append(doDaCooking(chefs));
+		sb.append(doDaKilling());
+		sb.append(doDaEating());
+
+		return sb;
+	}
+
 
 	@Override
 	public String next() {
 		StringBuilder sb = new StringBuilder();
-//		sb.delete(0,sb.length());
-//		sb.append("Pending implementation");
-		
-		//doStuff()
 		colony.updateMembers(list);
 
 		sb.append(finishDay());
@@ -125,8 +139,6 @@ public class Game implements IGame {
 		sb.append(startDay());
 
 		list=colony.getMembers();
-
-		//System.err.println(list);
 
 		ic.updateList(FXCollections.observableArrayList(list));
 		
