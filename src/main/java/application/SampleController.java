@@ -16,7 +16,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import static application.Constants.*;
+import static application.Constants.NUM_SKILLS;
+import static application.Constants.SKILL_NAMES;
 
 public class SampleController implements Initializable,IController{
 
@@ -37,6 +38,8 @@ public class SampleController implements Initializable,IController{
 	@FXML TextField wep;
 
 	@FXML Button go;
+
+	private Alert sure;
 
 	private boolean lost;
 	private IGame ig;
@@ -68,6 +71,7 @@ public class SampleController implements Initializable,IController{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+        sure = new Alert(Alert.AlertType.WARNING,"You have members that are not assigned yet. \nAre you sure you just want them to sit around?");
 		ig = new Game(this);
 		TableColumn<Member,Integer> cols[] = new TableColumn[NUM_SKILLS];
 		for (int i = 0 ; i<cols.length ; i++) {
@@ -104,6 +108,15 @@ public class SampleController implements Initializable,IController{
 	}
 
 	@FXML public void next() {
+
+	    if(list.parallelStream().anyMatch(e -> e.getAssignment().equals(Assignment.None.toString()))){
+	        sure.showAndWait().filter(e-> e==ButtonType.OK).ifPresent(e -> proceed());
+        }else proceed();
+		
+	}
+
+	private void proceed(){
+
 		textymexty.setText(ig.next());
 		table.refresh();
 
@@ -112,18 +125,22 @@ public class SampleController implements Initializable,IController{
 		}
 
 		update();
-		
-		
-	}
+
+
+    }
+
 
 	@FXML public void assign(ActionEvent event) {
 		
 		Assignment a = Assignment.toAssignment(((MenuItem)event.getSource()).getText());
 		
 		table.getSelectionModel().getSelectedIndices().parallelStream().forEach(e -> list.get(e).setAsssignment(a));
+
 		table.refresh();
 
 	}
+
+
 
 
 	@FXML
