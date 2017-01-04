@@ -2,11 +2,11 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane prefHeight="642.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+<AnchorPane prefHeight="642.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <children>
       <VBox prefHeight="642.0" prefWidth="711.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="382.0" prefWidth="711.0">
+            <HBox prefHeight="378.0" prefWidth="833.0">
                <children>
                   <TableView fx:id="table" onContextMenuRequested="#checkMenuItems" prefHeight="382.0" prefWidth="490.0">
                     <columns>
@@ -28,15 +28,15 @@
                         </ContextMenu>
                      </contextMenu>
                   </TableView>
-                  <VBox prefHeight="258.0" prefWidth="172.0">
+                  <VBox prefHeight="377.0" prefWidth="311.0">
                      <children>
-                        <HBox>
+                        <HBox minHeight="-Infinity" minWidth="-Infinity">
                            <children>
                               <Label prefHeight="26.0" prefWidth="118.0" text="Total members" />
                               <TextField fx:id="mem" editable="false" prefHeight="26.0" prefWidth="84.0" />
                            </children>
                         </HBox>
-                        <HBox>
+                        <HBox minHeight="-Infinity" minWidth="-Infinity">
                            <children>
                               <Label prefHeight="26.0" prefWidth="118.0" text="Food rations" />
                               <TextField fx:id="food" editable="false" prefHeight="26.0" prefWidth="84.0" />
@@ -54,12 +54,43 @@
                               <TextField fx:id="wep" editable="false" prefHeight="26.0" prefWidth="84.0" />
                            </children>
                         </HBox>
+                       <HBox>
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="118.0" text="SCrap" />
+                              <TextField fx:id="scr" editable="false" prefHeight="26.0" prefWidth="84.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="118.0" text="CookBots" />
+                              <TextField fx:id="hobs" editable="false" prefHeight="26.0" prefWidth="84.0" />
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="118.0" text="Turrets" />
+                              <TextField fx:id="turs" editable="false" prefHeight="26.0" prefWidth="84.0" />
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tab2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="302.0">
+                          <columns>
+                            <TableColumn fx:id="builds" prefWidth="75.0" text="Build" />
+                              <TableColumn fx:id="time" prefWidth="75.0" text="Time" />
+                            <TableColumn fx:id="scCost" prefWidth="75.0" text="Scrap" />
+                              <TableColumn fx:id="wepCost" prefWidth="75.0" text="Weapons" />
+                          </columns>
+                        </TableView>
                      </children>
                   </VBox>
-                  <Button fx:id="go" mnemonicParsing="false" onMouseClicked="#next" text="Go" />
+                  <VBox prefHeight="377.0" prefWidth="80.0">
+                     <children>
+                        <Label minHeight="-Infinity" minWidth="-Infinity" text="Active projects:" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="go" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#next" text="Go" />
                </children>
             </HBox>
-            <TextArea fx:id="textymexty" editable="false" prefHeight="261.0" prefWidth="711.0" />
+            <TextArea fx:id="textymexty" editable="false" prefHeight="271.0" prefWidth="884.0" />
          </children>
       </VBox>
    </children>

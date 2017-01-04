@@ -11,6 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import projects.AutoHob;
+import projects.Project;
+import projects.Turret;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,7 +24,13 @@ import static application.Constants.SKILL_NAMES;
 
 public class SampleController implements Initializable,IController{
 
-	@FXML TableView<Member> table;
+    @FXML TableView<Project> tab2;
+    @FXML TableColumn<Project,Integer> wepCost;
+    @FXML TableColumn<Project,String> builds;
+    @FXML TableColumn<Project,Integer> time;
+    @FXML TableColumn<Project,Integer> scCost;
+
+    @FXML TableView<Member> table;
 	@FXML TableColumn<Member,String> name;
 	@FXML TableColumn<Member,String> assignment;
 	@FXML TableColumn<Member,String> hasWep;
@@ -36,6 +45,9 @@ public class SampleController implements Initializable,IController{
 	@FXML TextField food;
 	@FXML TextField unc;
 	@FXML TextField wep;
+    @FXML TextField scr;
+    @FXML TextField hobs;
+    @FXML TextField turs;
 
 	@FXML Button go;
 
@@ -87,6 +99,18 @@ public class SampleController implements Initializable,IController{
 		hasWep.setCellValueFactory(new PropertyValueFactory<Member, String>("weapon"));
 		table.setItems(list);
 		update();
+
+		ObservableList<Project> projs = FXCollections.observableArrayList();
+		projs.add(new AutoHob());
+		projs.add(new Turret());
+
+		builds.setCellValueFactory(new PropertyValueFactory<Project, String>("name"));
+        scCost.setCellValueFactory(new PropertyValueFactory<Project, Integer>("scrap"));
+        wepCost.setCellValueFactory(new PropertyValueFactory<Project, Integer>("weapons"));
+        time.setCellValueFactory(new PropertyValueFactory<Project, Integer>("time"));
+
+        tab2.setItems(projs);
+
 	}
 
 	@FXML public void checkMenuItems() {
