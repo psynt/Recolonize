@@ -15,15 +15,6 @@ hs_err_pid*
 /build/
 /.gradle/
 /bin/
-.idea/compiler.xml
-.idea/libraries/
-.idea/misc.xml
-.idea/modules.xml
-.idea/modules/Recolonize_main.iml
-.idea/modules/Recolonize_test.iml
-.idea/scala_compiler.xml
-.idea/vcs.xml
-.idea/workspace.xml
 Recolonize.eml
 /gradlew.bat
 .idea/

@@ -38,6 +38,8 @@ public interface Constants {
 		return res;
 	};
 
-
+	BiFunction<Integer,Integer,Integer> min = (a,b) ->{
+	    return a<b?a:b;
+    };
 
 }

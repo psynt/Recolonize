@@ -1,6 +1,6 @@
 package cycle;
 
-import application.Functions;
+import application.Constants;
 import cycle.events.Probabilities;
 import entities.Member;
 
@@ -48,7 +48,7 @@ public class Colony {
 
 		ArrayList<Member> deaths = new ArrayList<>();
 		Collections.shuffle(members);
-		for (int i = Functions.min(members.size(),n)-1 ; i>=0 ; i--) {
+		for (int i = Constants.min.apply(members.size(),n)-1; i>=0 ; i--) {
 			if( ((int)(Math.random()*100)) >= Probabilities.veryLow.getProbability() ) {
 				deaths.add(members.get(i));
 				members.remove(i);

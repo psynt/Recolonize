@@ -1,6 +1,6 @@
 package cycle.events;
 
-import application.Functions;
+import application.Constants;
 import entities.Member;
 import skills.XPRates;
 
@@ -35,7 +35,7 @@ public class CookEvent extends Event {
      * @return amount of unc that was converted
      */
     public static int cook(ArrayList<Member> chefs, int avail){
-        return Functions.min(avail, chefs.parallelStream().map(e -> humanCook(e)).reduce(0 ,(a, b) -> a+b));
+        return Constants.min.apply(avail, chefs.parallelStream().map(e -> humanCook(e)).reduce(0 ,(a, b) -> a+b));
     }
 
 }
